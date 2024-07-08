@@ -37,14 +37,20 @@
           <div class="col lg-12">
             <form>
               <div class="form-group" data-aos="zoom-in-left" data-aos-duration="3000">
-                <label for="formGroupExampleInput">Busqueda por Categoria</label>
-                <input type="search" class="form-control mb-3" id="buscarCategoria" placeholder="Categoria">
-                <button type="submit" class="btn btn-warning">Buscar</button>
-              </div>
-              <div class="form-group" data-aos="zoom-in-left" data-aos-duration="3000">
                 <label for="formGroupExampleInput">Busqueda por Libro</label>
                 <input type="search" class="form-control mb-3" id="buscarLibro" placeholder="Libro">
                 <button type="submit" class="btn btn-warning">Buscar</button>
+              </div>
+              <div class="form-group" data-aos="zoom-in-left" data-aos-duration="3000">
+                <label for="formGroupExampleInput">Busqueda por Categoria</label>
+                <div class="dropdown">
+                  <button class="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                    -----
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                  </div>
+                </div>
               </div>
             </form>
           </div>
@@ -54,65 +60,32 @@
 
         {% comment %} Empieza la lista {% endcomment %}
         <div class="row my-5">
-          <div class="col lg-6">
-            <ul class="list-group" data-aos="fade-right">
-              <li class="list-group-item">An item</li>
-              <li class="list-group-item">A second item</li>
-              <li class="list-group-item">A third item</li>
-              <li class="list-group-item">A fourth item</li>
-              <li class="list-group-item">And a fifth one</li>
-              <li class="list-group-item">An item</li>
-              <li class="list-group-item">A second item</li>
-              <li class="list-group-item">A third item</li>
-              <li class="list-group-item">A fourth item</li>
-              <li class="list-group-item">And a fifth one</li>
-            </ul>
-          </div>
-          <div class="col lg-6">
-            <ul class="list-group" data-aos="fade-left">
-              <li class="list-group-item">An item</li>
-              <li class="list-group-item">A second item</li>
-              <li class="list-group-item">A third item</li>
-              <li class="list-group-item">A fourth item</li>
-              <li class="list-group-item">And a fifth one</li>
-              <li class="list-group-item">An item</li>
-              <li class="list-group-item">A second item</li>
-              <li class="list-group-item">A third item</li>
-              <li class="list-group-item">A fourth item</li>
-              <li class="list-group-item">And a fifth one</li>
-            </ul>
+          <div class="col lg-12">
+            <table class="table table-bordered table" style="background-color: beige" data-aos="fade-down-left" data-aos-duration="3000">
+              <thead>
+                <tr style="background-color: orange">
+                  <th scope="col">ID Libro</th>
+                  <th scope="col">Titulo</th>
+                  <th scope="col">Año de publicación</th>
+                  <th scope="col">Nombre Autor</th>
+                  <th scope="col">Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr>
+                  <th scope="row">{{Autor.id_autor}}</th>
+                  <td>{{Autor.nombre}}</td>
+                  <td>{{Autor.nacionalidad}}</td>
+                  <td>{{Autor.nombre}}</td>
+                  <td>{{Autor.nacionalidad}}</td>
+                </tr>
+
+              </tbody>
+            </table>
           </div>
         </div>
         {% comment %} Termina la lista {% endcomment %}
-
-        {% comment %} Empieza la lista 2 {% endcomment %}
-
-        <div class="row my-5">
-          <div class="col lg-12">
-            <ul class="list-group list-group-horizontal">
-              <li class="list-group-item">An item</li>
-              <li class="list-group-item">A second item</li>
-            </ul>
-            <ul class="list-group list-group-horizontal-lg">
-              <li class="list-group-item">An item</li>
-              <li class="list-group-item">A second item</li>
-            </ul>
-            <ul class="list-group list-group-horizontal-lg">
-              <li class="list-group-item">An item</li>
-              <li class="list-group-item">A second item</li>
-            </ul>
-            <ul class="list-group list-group-horizontal-lg">
-              <li class="list-group-item">An item</li>
-              <li class="list-group-item">A second item</li>
-            </ul>
-            <ul class="list-group list-group-horizontal-lg">
-              <li class="list-group-item">An item</li>
-              <li class="list-group-item">A second item</li>
-            </ul>
-          </div>
-        </div>
-
-            {% comment %} Termina la lista 2 {% endcomment %}
 
       </div>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
