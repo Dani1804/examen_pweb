@@ -37,27 +37,20 @@
             <table class="table table-bordered table" style="background-color: beige" data-aos="fade-down-left" data-aos-duration="3000">
               <thead>
                 <tr style="background-color: orange">
-                  <th scope="col">ID</th>
-                  <th scope="col">Nombre</th>
+                  <th scope="col">ID Autor</th>
+                  <th scope="col">Nombre Autor</th>
                   <th scope="col">Nacionalidad</th>
                 </tr>
               </thead>
               <tbody>
+
+                {% for Autor in Autores %}
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
+                  <th scope="row">{{Autor.id_autor}}</th>
+                  <td>{{Autor.nombre}}</td>
+                  <td>{{Autor.nacionalidad}}</td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                </tr>
+                {% endfor %}
               </tbody>
             </table>
           </div>

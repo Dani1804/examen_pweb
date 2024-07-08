@@ -26,8 +26,7 @@ def catalogoAutores (request):
     Autores = Autor.objects.all()
     context = {
         "Navbars": Navbars,
-        "Autores": Autores
-        
+        "Autores": Autores  
     }
     return render(request,'catalogos/catalogoAutores.html',context)
 
