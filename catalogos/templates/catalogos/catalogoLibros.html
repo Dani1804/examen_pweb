@@ -39,29 +39,19 @@
                 <tr style="background-color: orange">
                   <th scope="col">ID</th>
                   <th scope="col">Titulo</th>
-                  <th scope="col">Descripción</th>
                   <th scope="col">Año de publicación</th>
+                  <th scope="col">Descripción</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
-                </tr>
+                  {% for Libro in Libros %}
+                  <tr>
+                    <th scope="row">{{Libro.id_libro}}</th>
+                    <td>{{Libro.titulo}}</td>
+                    <td>{{Libro.ano_de_publicacion}}</td>
+                    <td>{{Libro.descripcion_breve}}</td>
+                  </tr>
+                  {% endfor %}
               </tbody>
             </table>
           </div>
