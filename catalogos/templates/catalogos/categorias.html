@@ -94,35 +94,28 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="sweetalert2.min.js"></script>
-<script>
+  <script>
     $(document).ready(function() {
         AOS.init();
     });
   </script>
-      <script>
-        function updateButton(element) {
-            // Obtener el botón usando su ID
-            var button = document.getElementById("dropdownButton");
-            // Actualizar el texto del botón con el texto del elemento seleccionado
-            button.textContent = element.textContent;
-        }
-<<<<<<< HEAD
-
-    </script>
-    <script>
-      document.getElementById("mostrarTable").addEventListener("click", function() {
-        var table = document.getElementById("tablaSearch");
-        if (table.style.display === "none") {
-          table.style.display = "table";
-        } else {
-          table.style.display = "none";
-        }
-        });
-    </script>
+  <script>
+    function updateButton(element) {
+        // Obtener el botón usando su ID
+        var button = document.getElementById("dropdownButton");
+        // Actualizar el texto del botón con el texto del elemento seleccionado
+        button.textContent = element.textContent;
+    }
   </script>
-=======
-    </script>
-
->>>>>>> 7b692350578df70ecd70b927215fbc507a270d77
+  <script>
+    document.getElementById("mostrarTable").addEventListener("click", function() {
+    var table = document.getElementById("tablaSearch");
+    if (table.style.display === "none") {
+      table.style.display = "table";
+    } else {
+      table.style.display = "none";
+    }
+    });
+  </script>
 </body>
 </html>
