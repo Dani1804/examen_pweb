@@ -30,12 +30,13 @@ def catalogoAutores (request):
     }
     return render(request,'catalogos/catalogoAutores.html',context)
 
-def categorias (request):
+def categorias(request):
     Navbars = NavItem.objects.all()
     Categorias = Categoria.objects.all()
+    Libros = Libro.objects.all().select_related('id_autor' , 'id_categoria') 
     context = {
         "Navbars": Navbars,
-        "Categorias": Categorias
-        
+        "Categorias": Categorias,
+        "Libros": Libros,
     }
-    return render(request,'catalogos/categorias.html',context)
+    return render(request, 'catalogos/categorias.html', context)

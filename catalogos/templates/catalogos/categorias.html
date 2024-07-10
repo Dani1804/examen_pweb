@@ -70,19 +70,21 @@
                   <th scope="col">Titulo</th>
                   <th scope="col">Año de publicación</th>
                   <th scope="col">Nombre Autor</th>
+                  <th scope="col">Categoria</th>
                   <th scope="col">Descripción</th>
                 </tr>
               </thead>
               <tbody>
-
+                {% for libro in Libros %}
                 <tr>
-                  <th scope="row">{{Autor.id_autor}}</th>
-                  <td>{{Autor.nombre}}</td>
-                  <td>{{Autor.nacionalidad}}</td>
-                  <td>{{Autor.nombre}}</td>
-                  <td>{{Autor.nacionalidad}}</td>
+                    <td>{{ libro.id_libro }}</td>
+                    <td>{{ libro.titulo }}</td>
+                    <td>{{ libro.ano_de_publicacion }}</td>
+                    <td>{{ libro.id_autor.nombre }}</td> 
+                    <td>{{ libro.id_categoria.nombre }}</td>
+                    <td>{{ libro.descripcion_breve }}</td>
                 </tr>
-
+                {% endfor %}
               </tbody>
             </table>
           </div>
