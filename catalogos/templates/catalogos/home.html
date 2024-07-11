@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Hunters</title>
+    <title>Book Hunters || Home</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="sweetalert2.min.css">
@@ -28,10 +28,10 @@
           </div>
         </div>
       </nav>
-      <div class="container">
+      <div class="container-fluid">
         <!--Empezar aquí el front-->
 
-        {% comment %} Empieza el Jumbotron {% endcomment %}
+        {% comment %} Empieza el Jumbotron de inicial{% endcomment %}
         <div class="row my-5">
           <div class="col-lg-12">
             <div class="jumbotron jumbotron-fluid rounded-pill" style="background-color: beige" border="" data-aos="fade-up" data-aos-duration="3000">
@@ -41,7 +41,7 @@
             </div>
           </div>
         </div>
-        {% comment %} Termina el Jumbotron {% endcomment %}
+        {% comment %} Termina el Jumbotron inicial{% endcomment %}
 
         {% comment %} Empieza el Carousel {% endcomment %}
         <div class="row my-5">
@@ -82,9 +82,7 @@
         </div>
         {% comment %} Termina el Carousel {% endcomment %}
 
-
-
-
+        {% comment %} Empieza Jumbotron 2 {% endcomment %}
         <div class="row my-5">
           <div class="col-lg-12">
             <div class="jumbotron jumbotron-fluid rounded" style="background-color: beige" data-aos="fade-up" data-aos-duration="3000">
@@ -96,9 +94,11 @@
             </div>
           </div>
         </div>
+        {% comment %} Termina Jumbotron 2 {% endcomment %}
 
-        <div class="row my-5">
-          <div class="col-lg-4">
+        {% comment %} Empiezan Cards {% endcomment %}
+        <div class="row my-5 mx-5">
+          <div class="col-lg-4 my-5">
             <div class="card" style="width: 18rem;" style="background-color: beige" href="categorias" data-aos="fade-right" data-aos-duration="3000">
               <a href="categorias"><img src="https://concepto.de/wp-content/uploads/2023/02/Tipos-de-libros.jpg" class="card-img-top" alt="..." style="height: 200px;" ></a>
               <div class="card-body text-align: center" style="background-color: beige">
@@ -106,7 +106,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-4 my-5">
             <div class="card" style="width: 18rem;" style="background-color: beige" data-aos="fade-up" data-aos-duration="3000">
               <a href="catalogoAutores"><img src="https://www.infobae.com/new-resizer/0iVtOwwUbeqHDFiX4P_5ENCzDaE=/1200x900/filters:format(webp):quality(85)/s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2016/07/20205320/mejores-libros-portada-4-3.jpg" class="card-img-top" alt="..." style="height: 200px;"></a>
               <div class="card-body text-align: center" style="background-color: beige">
@@ -114,7 +114,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-4 my-5">
             <div class="card" style="width: 18rem;" style="background-color: beige" data-aos="fade-left" data-aos-duration="3000">
               <a href="catalogoLibros"><img src="https://hips.hearstapps.com/hmg-prod/images/old-books-in-a-library-big-file-royalty-free-image-1666591048.jpg" class="card-img-top" alt="..." style="height: 200px;"></a>
               <div class="card-body text-align: center" style="background-color: beige">
@@ -123,8 +123,9 @@
             </div>
           </div>
         </div>
-
+        {% comment %} Terminan Cards {% endcomment %}
       </div>
+      
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
