@@ -40,3 +40,19 @@ def categorias(request):
         "Libros": Libros,
     }
     return render(request, 'catalogos/categorias.html', context)
+
+def verMas(request):
+    Navbars = NavItem.objects.all()
+    id_libro = request.GET.get('id_libro')
+    Libros = Libro.objects.get(id_libro=id_libro)
+    Autor = Libros.id_autor
+    Categoria = Libros.id_categoria
+
+    context = {
+        
+        "Navbars": Navbars,
+        "Libros": Libros,
+        "Autor": Autor,
+        "Categoria": Categoria
+    }
+    return render(request,'catalogos/verMas.html',context) 
