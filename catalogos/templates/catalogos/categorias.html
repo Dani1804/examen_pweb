@@ -35,25 +35,26 @@
 
         <div class="row my-5 rounded border border-warning" style="background-color: beige">
           <div class="col lg-10">
-            <form>
-                <div class="form-group fluid" data-aos="zoom-in-left" data-aos-duration="3000">
-                  <label for="formGroupExampleInput">Busqueda por Libro</label>
-                  <input type="input" class="form-control mb-3" id="buscarLibro" placeholder="Libro">
-                  <button id="mostrarTable" type="button" class="btn btn-warning" onclick="verificarBusqueda()">Buscar</button>
-                </div>
+            <form id="searchForm">
+              <div class="form-group fluid" data-aos="zoom-in-left" data-aos-duration="3000">
+                <label for="formGroupExampleInput">Busqueda por Libro</label>
+                <input type="input" class="form-control mb-3" id="buscarLibro" name="buscarLibro" placeholder="Libro">
+              </div>
               <div class="form-group fluid" data-aos="zoom-in-left" data-aos-duration="3000">
                 <label for="formGroupExampleInput">Busqueda por Categoria</label>
                 <div class="dropdown">
-                  <button id="dropdownButton" class="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" >
-                      -----
+                  <button id="dropdownButton" class="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                    -----
                   </button>
                   <div class="dropdown-menu fluid" style="position:relative; z-index:10">
-                      {% for Categoria in Categorias %}
-                      <a class="dropdown-item" href="#" onclick="updateButton(this)">{{Categoria.nombre}}</a>
-                      {% endfor %}
+                    {% for Categoria in Categorias %}
+                    <a class="dropdown-item" href="#" onclick="updateButton(this)">{{Categoria.nombre}}</a>
+                    {% endfor %}
                   </div>
                 </div>
               </div>
+              <button type="submit" class="btn btn-warning">Buscar</button>
+              <button type="button" class="btn btn-secondary" id="clearFilters">Limpiar</button>
             </form>
           </div>
         </div>
@@ -99,57 +100,77 @@
     $(document).ready(function() {
         AOS.init();
     });
-  </script>
-  <script>
+
     function updateButton(element) {
-        // Obtener el botón usando su ID
         var button = document.getElementById("dropdownButton");
-        // Actualizar el texto del botón con el texto del elemento seleccionado
         button.textContent = element.textContent;
     }
-  </script>
-  <script>
-    document.getElementById("mostrarTable").addEventListener("click", function() {
-    var table = document.getElementById("tablaSearch");
-    if (table.style.display === "none") {
-      table.style.display = "table";
-    } else {
-      table.style.display = "none";
-    }
+
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const buscarLibro = document.getElementById('buscarLibro').value.trim();
+      const categoria = document.getElementById('dropdownButton').textContent.trim();
+  
+      if (buscarLibro === "" && categoria === "-----") {
+          Swal.fire({
+              position: "top-end",
+              icon: "error",
+              title: "Búsqueda incorrecta: no se ingresó ningún libro.",
+              showConfirmButton: false,
+              timer: 1500
+          });
+          return; // Detener la ejecución del código
+      }
+      
+      fetch(`{% url 'buscar_libros' %}?buscarLibro=${buscarLibro}&categoria=${categoria}`)
+        .then(response => response.json())
+        .then(data => {
+          const tableBody = document.querySelector('#tablaSearch tbody');
+          tableBody.innerHTML = '';
+  
+          if (data.libros.length === 0) {
+              Swal.fire({
+                  position: "top-end",
+                  icon: "error",
+                  title: "La categoría no coincide con el libro buscado.",
+                  showConfirmButton: false,
+                  timer: 1500
+              });
+              document.getElementById('tablaSearch').style.display = 'none';
+              return; // Detener la ejecución del código
+          }
+  
+          Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Búsqueda exitosa",
+              showConfirmButton: false,
+              timer: 1000
+          });
+  
+          data.libros.forEach(libro => {
+            const row = `
+              <tr>
+                <td>${libro.id_libro}</td>
+                <td>${libro.titulo}</td>
+                <td>${libro.ano_de_publicacion}</td>
+                <td>${libro.nombre_autor}</td>
+                <td>${libro.categoria}</td>
+                <td>${libro.descripcion_breve}</td>
+              </tr>
+            `;
+            tableBody.innerHTML += row;
+          });
+  
+          document.getElementById('tablaSearch').style.display = data.libros.length > 0 ? 'table' : 'none';
+        });
     });
 
-      function verificarBusqueda() {
-          const input = document.getElementById('buscarLibro').value;
-          if (input.trim() === "") {
-              busquedaIncorrecta();
-          } else {
-              busquedaCorrecta();
-          }
-      }
-  
-      function busquedaIncorrecta() {
-          // Lógica para busquedaIncorrecta
-          console.log("Búsqueda incorrecta: no se ingresó ningún libro.");
-          Swal.fire({
-            position: "top-end",
-            icon: "error",
-            title: "Por favor, ingrese el nombre de un libro.",
-            showConfirmButton: false,
-            timer: 1500
-          });
-      }
-  
-      function busquedaCorrecta() {
-          // Lógica para busquedaCorrecta
-          console.log("Búsqueda correcta: se ingresó un libro.");
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Busqueda exitosa!",
-            showConfirmButton: false,
-            timer: 1000
-          });
-      }     
+    document.getElementById('clearFilters').addEventListener('click', function() {
+      document.getElementById('buscarLibro').value = '';
+      document.getElementById('dropdownButton').textContent = '-----';
+    });
   </script>
 </body>
 </html>

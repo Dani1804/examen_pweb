@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -56,3 +57,27 @@ def verMas(request):
         "Categoria": Categoria
     }
     return render(request,'catalogos/verMas.html',context) 
+
+
+def buscar_libros(request):
+    libros = Libro.objects.all()
+
+    buscar_libro = request.GET.get('buscarLibro', '')
+    categoria_nombre = request.GET.get('categoria', '')
+
+    if buscar_libro:
+        libros = libros.filter(titulo__icontains=buscar_libro)
+
+    if categoria_nombre:
+        libros = libros.filter(id_categoria__nombre=categoria_nombre)
+
+    libros_data = [{
+        'id_libro': libro.id_libro,
+        'titulo': libro.titulo,
+        'ano_de_publicacion': libro.ano_de_publicacion,
+        'nombre_autor': libro.id_autor.nombre,
+        'categoria': libro.id_categoria.nombre,
+        'descripcion_breve': libro.descripcion_breve,
+    } for libro in libros]
+
+    return JsonResponse({'libros': libros_data})
