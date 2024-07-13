@@ -29,13 +29,26 @@
         </div>
       </nav>
       <div class="container my-5">
-        <h1>{{ Libros.titulo }}</h1>
-        <p>ID: {{ Libros.id_libro }}</p>
-        <p>Descripción: {{ Libros.descripcion_breve }}</p>
-        <p>Año de publicación: {{Libros.ano_de_publicacion}}</p>
-        <p>Autor: {{Autor.nombre}}</p>
-        <p>Nacionalidad: {{Autor.nacionalidad}}</p>
-        <p>Categoria: {{Categoria.nombre}}</p>
+        <div class="jumbotron fluid rounded" style="background-color: beige" data-aos="fade-up" data-aos-duration="3000">
+          <div class="row-my-5">
+            <div class="col-lg-10">
+              <h1><strong><u>{{ Libros.titulo }}</u></strong></h1>
+              <ul>  
+                <li>ID: {{ Libros.id_libro }}</li>
+                <li>Descripción: {{ Libros.descripcion_breve }}</li>
+                <li>Año de publicación: {{Libros.ano_de_publicacion}}</li>
+                <li>Autor: {{Autor.nombre}}</li>
+                <li>Nacionalidad: {{Autor.nacionalidad}}</li>
+                <li>Categoria: {{Categoria.nombre}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
     </div>
 
 
